@@ -33,7 +33,6 @@ body {
   z-index: 0;
 }
 
-/* Titlu banner */
 .banner h1 {
   margin: 0;
   padding-top: 100px;
@@ -44,10 +43,115 @@ body {
   text-shadow: 2px 2px 5px black;
 }
 
-/* IP server pulse */
 .banner p {
   font-size: 24px;
   text-shadow: 1px 1px 3px black;
   position: relative;
   z-index: 2;
-  animation: pulse 2s infinit
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Section */
+.section {
+  text-align: center;
+  padding: 50px 20px;
+  background: rgba(0,0,0,0.6);
+  margin: 30px auto;
+  max-width: 900px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+
+.section h2 {
+  color: #ff6600;
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px black;
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+  font-size: 20px;
+}
+
+.section ul li {
+  margin: 15px 0;
+}
+
+/* Butoane */
+.buttons {
+  margin-top: 30px;
+}
+
+button {
+  background: #ff6600;
+  border: none;
+  padding: 15px 30px;
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  text-shadow: 1px 1px 3px black;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #cc5200;
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0,0,0,0.8);
+  margin-top: 40px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<!-- Banner -->
+<div class="banner">
+  <h1>RoSurvive Rust Server</h1>
+  <p>IP: 203.16.163.254:25840</p>
+</div>
+
+<!-- Rules -->
+<div class="section">
+  <h2>📜 Rules</h2>
+  <ul>
+    <li>🚫 No cheating / exploiting</li>
+    <li>🤝 Respect other players</li>
+    <li>🛠 No griefing bases</li>
+    <li>🌍 Play fair & have fun</li>
+  </ul>
+</div>
+
+<!-- Shop / VIP -->
+<div class="section">
+  <h2>💎 Shop & VIP</h2>
+  <p>Support the server and unlock exclusive perks!</p>
+  <div class="buttons">
+    <button onclick="window.location.href='https://example.com/shop'">🛒 Shop</button>
+    <button onclick="window.location.href='https://example.com/vip'">⭐ VIP</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  © 2025 RoSurvive - Rust Server | All rights reserved
+</footer>
+
+</body>
+</html>
