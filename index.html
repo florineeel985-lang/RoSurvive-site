@@ -174,21 +174,9 @@ ul.rules {
   line-height: 1.4;
 }
 
-.vip-card form input[type="submit"] {
+.vip-card form input[type="image"] {
   margin-top: 10px;
-  background: #fff;
-  color: #ff6600;
-  border: none;
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.vip-card form input[type="submit"]:hover {
-  background: #ffcc99;
-  transform: scale(1.05);
 }
 
 /* Footer */
@@ -245,42 +233,43 @@ footer {
   <h2>💎 Shop & VIP</h2>
   <p>Support the server and unlock exclusive perks!</p>
   <div class="vip-options">
+
+    <!-- Bronze VIP -->
     <div class="vip-card">
       <h4>Bronze VIP - 10€</h4>
       <p>• Extra 50 scrap/day<br>• Small building bonus</p>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="email@paypal.com">
-        <input type="hidden" name="item_name" value="Bronze VIP">
-        <input type="hidden" name="amount" value="10.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="submit" value="Buy Bronze VIP">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="YFBU29P28XAWG" />
+        <input type="hidden" name="currency_code" value="EUR" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="Buy Now" />
       </form>
     </div>
+
+    <!-- Silver VIP -->
     <div class="vip-card">
       <h4>Silver VIP - 15€</h4>
       <p>• Extra 150 scrap/day<br>• Medium building bonus<br>• Special skin</p>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="email@paypal.com">
-        <input type="hidden" name="item_name" value="Silver VIP">
-        <input type="hidden" name="amount" value="15.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="submit" value="Buy Silver VIP">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="YGBQWAPW8SPEL" />
+        <input type="hidden" name="currency_code" value="EUR" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="Buy Now" />
       </form>
     </div>
+
+    <!-- Gold VIP -->
     <div class="vip-card">
       <h4>Gold VIP - 20€</h4>
       <p>• Extra 300 scrap/day<br>• Large building bonus<br>• Special skins + Emotes</p>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="email@paypal.com">
-        <input type="hidden" name="item_name" value="Gold VIP">
-        <input type="hidden" name="amount" value="20.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="submit" value="Buy Gold VIP">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="L4S7UKKCQLCV2" />
+        <input type="hidden" name="currency_code" value="USD" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="Buy Now" />
       </form>
     </div>
+
   </div>
 </div>
 
@@ -290,38 +279,38 @@ footer {
 </footer>
 
 <script>
-// Countdown lunar pentru 20
-function getNextWipeDate() {
-  const now = new Date();
-  let year = now.getFullYear();
-  let month = now.getMonth();
-  let day = 20;
-  if (now.getDate() > 20) {
-    month += 1;
-    if (month > 11) { month = 0; year += 1; }
-  }
-  return new Date(year, month, day, 18, 0, 0).getTime();
-}
-
-const timer = document.getElementById("timer");
-
-setInterval(function() {
-  const countdownDate = getNextWipeDate();
-  const now = new Date().getTime();
-  const distance = countdownDate - now;
-
-  if (distance < 0) {
-    timer.innerHTML = "✅ Wipe in progress!";
-    return;
+  // Countdown lunar pentru 20
+  function getNextWipeDate() {
+    const now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth();
+    let day = 20;
+    if (now.getDate() > 20) {
+      month += 1;
+      if (month > 11) { month = 0; year += 1; }
+    }
+    return new Date(year, month, day, 18, 0, 0).getTime();
   }
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  const timer = document.getElementById("timer");
 
-  timer.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-}, 1000);
+  setInterval(function() {
+    const countdownDate = getNextWipeDate();
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    if (distance < 0) {
+      timer.innerHTML = "✅ Wipe in progress!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    timer.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+  }, 1000);
 </script>
 
 </body>
