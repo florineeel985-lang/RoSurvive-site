@@ -20,7 +20,7 @@ body {
   color: white;
   background: url('banner.jpg') no-repeat center center;
   background-size: cover;
-  height: 450px;
+  height: 400px;
   overflow: hidden;
 }
 
@@ -29,7 +29,7 @@ body {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.5);
   z-index: 0;
 }
 
@@ -44,24 +44,85 @@ body {
 }
 
 .banner p {
-  font-size: 24px;
-  text-shadow: 1px 1px 3px black;
+  font-size: 22px;
   position: relative;
   z-index: 2;
-  animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.7; }
-  100% { transform: scale(1); opacity: 1; }
+/* Discord Button in Banner */
+.banner .buttons {
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.banner button {
+  background: #7289da; /* albastru Discord */
+  color: white;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.banner button:hover {
+  background: #5b6eae;
+  transform: scale(1.05);
+}
+
+/* Countdown */
+.countdown {
+  text-align: center;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(0,0,0,0.6);
+  max-width: 700px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+
+.countdown h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #ff6600;
+}
+
+#timer {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Galerie */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
 /* Section */
 .section {
   text-align: center;
-  padding: 50px 20px;
-  background: rgba(0,0,0,0.6);
+  padding: 40px 20px;
+  background: rgba(0,0,0,0.65);
   margin: 30px auto;
   max-width: 900px;
   border-radius: 15px;
@@ -70,27 +131,16 @@ body {
 
 .section h2 {
   color: #ff6600;
-  font-size: 36px;
+  font-size: 34px;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 5px black;
 }
 
-.section ul {
-  list-style: none;
-  padding: 0;
-  font-size: 20px;
-}
-
-.section ul li {
-  margin: 15px 0;
-}
-
-/* Butoane */
-.buttons {
+/* Buttons */
+.buttons-general {
   margin-top: 30px;
 }
 
-button {
+button.general {
   background: #ff6600;
   border: none;
   padding: 15px 30px;
@@ -100,11 +150,10 @@ button {
   border-radius: 10px;
   cursor: pointer;
   color: #fff;
-  text-shadow: 1px 1px 3px black;
   transition: 0.3s;
 }
 
-button:hover {
+button.general:hover {
   background: #cc5200;
   transform: scale(1.05);
 }
@@ -125,12 +174,34 @@ footer {
 <div class="banner">
   <h1>RoSurvive Rust Server</h1>
   <p>IP: 203.16.163.254:25840</p>
+  <div class="buttons">
+    <button onclick="window.open('https://discord.gg/GdF3yh8ApZ', '_blank')">
+      💬 Join Discord
+    </button>
+  </div>
+</div>
+
+<!-- Countdown -->
+<div class="countdown">
+  <h2>⏳ Next Wipe Countdown</h2>
+  <div id="timer">Loading...</div>
+</div>
+
+<!-- Galerie -->
+<div class="section">
+  <h2>📸 Gallery</h2>
+  <div class="gallery">
+    <img src="gallery1.jpg" alt="Rust Base">
+    <img src="gallery2.jpg" alt="Rust Fight">
+    <img src="gallery3.jpg" alt="Rust Nature">
+    <img src="gallery4.jpg" alt="Rust Event">
+  </div>
 </div>
 
 <!-- Rules -->
 <div class="section">
   <h2>📜 Rules</h2>
-  <ul>
+  <ul style="list-style:none; font-size:20px; padding:0;">
     <li>🚫 No cheating / exploiting</li>
     <li>🤝 Respect other players</li>
     <li>🛠 No griefing bases</li>
@@ -142,9 +213,9 @@ footer {
 <div class="section">
   <h2>💎 Shop & VIP</h2>
   <p>Support the server and unlock exclusive perks!</p>
-  <div class="buttons">
-    <button onclick="window.location.href='https://example.com/shop'">🛒 Shop</button>
-    <button onclick="window.location.href='https://example.com/vip'">⭐ VIP</button>
+  <div class="buttons-general">
+    <button class="general" onclick="window.location.href='https://example.com/shop'">🛒 Shop</button>
+    <button class="general" onclick="window.location.href='https://example.com/vip'">⭐ VIP</button>
   </div>
 </div>
 
@@ -152,6 +223,29 @@ footer {
 <footer>
   © 2025 RoSurvive - Rust Server | All rights reserved
 </footer>
+
+<script>
+// Countdown script
+const countdownDate = new Date("Aug 30, 2025 18:00:00").getTime(); // schimbă data wipe-ului
+const timer = document.getElementById("timer");
+
+setInterval(function() {
+  const now = new Date().getTime();
+  const distance = countdownDate - now;
+
+  if (distance < 0) {
+    timer.innerHTML = "✅ Wipe in progress!";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  timer.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+}, 1000);
+</script>
 
 </body>
 </html>
